@@ -57,7 +57,7 @@ export default function App() {
   const navigationScreens = [
     {
       name: 'ExpensesOverview',
-      component: ExpensesOverview,정
+      component: ExpensesOverview,
       options:{
         headerShown: false
       }
