@@ -57,7 +57,7 @@ export default function App() {
   const navigationScreens = [
     {
       name: 'ExpensesOverview',
-      component: ExpensesOverview,
+      component: ExpensesOverview,정
       options:{
         headerShown: false
       }
@@ -65,13 +65,19 @@ export default function App() {
     {
       name: 'ManageExpense',
       component: ManageExpense,
+      options:{
+        presentation: 'modal',
+      }
     }
   ]
   return (
     <>
       <StatusBar style="auto" />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+          headerStyle: { backgroundColor: GlobalStyles.colors.primary500},
+          headerTintColor: 'white'
+        }}>
           {
             navigationScreens.map(screen => (
               <Stack.Screen name={screen.name} component={screen.component} options={screen.options} key={screen.name}/>
