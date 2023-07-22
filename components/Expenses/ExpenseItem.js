@@ -51,10 +51,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   amountContainer:{
+    flexDirection: 'row',
     paddingHorizontal: 12,
     paddingVertical: 4,
     backgroundColor: 'white',
     justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 4,
     minWidth: 80,
   },

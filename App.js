@@ -7,6 +7,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import AllExpenses from './screens/AllExpenses';
 import RecentExpenses from './screens/RecentExpenses';
 import ManageExpense from './screens/ManageExpense';
+import ExpensesContextProvider from "./store/expenses-context";
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -73,18 +74,20 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{
-          headerStyle: { backgroundColor: GlobalStyles.colors.primary500},
-          headerTintColor: 'white'
-        }}>
-          {
-            navigationScreens.map(screen => (
-              <Stack.Screen name={screen.name} component={screen.component} options={screen.options} key={screen.name}/>
-            ))
-          }
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ExpensesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{
+            headerStyle: { backgroundColor: GlobalStyles.colors.primary500},
+            headerTintColor: 'white'
+          }}>
+            {
+              navigationScreens.map(screen => (
+                <Stack.Screen name={screen.name} component={screen.component} options={screen.options} key={screen.name}/>
+              ))
+            }
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ExpensesContextProvider>
     </>
   );
 }
