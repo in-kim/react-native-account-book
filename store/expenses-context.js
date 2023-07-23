@@ -71,9 +71,9 @@ const type = {
 
 export const ExpensesContext = createContext({
   expenses: [],
-  addExpenses: () => {},
-  deleteExpenses: () => {},
-  updateExpenses: () => {},
+  addExpenses: ({ description, amount, date}) => {},
+  deleteExpenses: (id) => {},
+  updateExpenses: (id, {description, amount, date}) => {},
 });
 
 function expensesReducer(state, action){
@@ -97,13 +97,13 @@ function expensesReducer(state, action){
 export default function ExpensesContextProvider({children}){
   const [expensesState, dispatch] = useReducer(expensesReducer, DUMMY_EXPENSES);
   const addExpenses = (expenseData) => {
-    dispatch({type: type.ADD, payload: expenseData})
+    dispatch({type: type.ADD, payload: expenseData});
   }
   const updateExpenses = (id, expenseData) => {
-    dispatch({type: type.UPDATE, payload: {id, data: expenseData}})
+    dispatch({type: type.UPDATE, payload: {id, data: expenseData}});
   }
   const deleteExpenses = (id) => {
-    dispatch({type: type.DELETE, payload: id})
+    dispatch({type: type.DELETE, payload: id});
   }
 
   const value = {
