@@ -1,5 +1,9 @@
 export function getFormattedDate(date){
-  return date.toISOString().slice(0,10);
+  if(date instanceof Date){
+    return date.toISOString().slice(0,10);
+  }else{
+    return new Date(date).toISOString().slice(0,10);
+  }
 }
 
 export function getDateMinusDays(date, days){
